@@ -12,6 +12,9 @@ wheels/
 # Local environment variables
 .env
 
+# Local maintenance scripts
+scripts/
+
 # IDE settings
 .idea/
 *.iml
