@@ -26,7 +26,6 @@ Follow the setup guide for your operating system:
 After completing the setup guide, run these commands in your terminal:
 
 ```text
-cd "$HOME"
 git clone https://github.com/dr2619-collin/project-task-api.git
 cd project-task-api
 git switch module-01
