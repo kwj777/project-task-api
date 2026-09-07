@@ -28,6 +28,15 @@ def list_tasks() -> list[Task]:
     return tasks
 
 
+# /completed is a fixed path, so it is declared before /{task_id}. FastAPI
+# checks routes in the order they are defined, and the route below would
+# otherwise try to read "completed" as a task ID.
+@router.get("/completed", summary="List completed tasks")
+def list_completed_tasks() -> list[Task]:
+    """Return only the tasks that are marked completed."""
+    return [task for task in tasks if task["completed"]]
+
+
 # GET /tasks/{task_id} reads one Task identified by its path parameter.
 @router.get("/{task_id}", summary="Get one task")
 def get_task(task_id: int) -> Task:

@@ -27,6 +27,15 @@ def list_projects() -> list[Project]:
     return projects
 
 
+# /count is a fixed path, so it is declared before /{project_id}. FastAPI
+# checks routes in the order they are defined, and the route below would
+# otherwise try to read "count" as a project ID.
+@router.get("/count", summary="Count all projects")
+def count_projects() -> dict[str, int]:
+    """Return how many projects are currently stored in memory."""
+    return {"count": len(projects)}
+
+
 # The value inside {project_id} is supplied by the URL path.
 @router.get("/{project_id}", summary="Get one project")
 def get_project(project_id: int) -> Project:
