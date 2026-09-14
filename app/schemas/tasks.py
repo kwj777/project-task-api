@@ -13,9 +13,12 @@ class TaskBase(BaseModel):
         str_strip_whitespace=True,
     )
 
-    title: str = Field(min_length=1, max_length=120)
+    title: str = Field(min_length=1, max_length=60)
     description: str = Field(min_length=1, max_length=500)
     completed: bool = False
+    # default supplies the value when the client omits the field; ge and le
+    # make 1 and 5 inclusive bounds that Pydantic enforces and OpenAPI records.
+    priority: int = Field(default=3, ge=1, le=5)
     project_id: int = Field(gt=0)
 
 
