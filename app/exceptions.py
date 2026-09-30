@@ -9,6 +9,10 @@ class ProjectNotFoundError(Exception):
     """
 
 
+class ProjectNameAlreadyExistsError(Exception):
+    """Signal that another Project already uses the requested name."""
+
+
 class TaskNotFoundError(Exception):
     """Signal that the requested Task does not exist."""
 

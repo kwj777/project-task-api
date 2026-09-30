@@ -23,6 +23,14 @@ def task_not_found() -> HTTPException:
     )
 
 
+def project_name_already_exists() -> HTTPException:
+    """Return the HTTP 409 response for a duplicate Project name."""
+    return HTTPException(
+        status_code=status.HTTP_409_CONFLICT,
+        detail="A project with this name already exists",
+    )
+
+
 def project_has_tasks() -> HTTPException:
     """Return the HTTP 409 response for a Project with related Tasks."""
     return HTTPException(
